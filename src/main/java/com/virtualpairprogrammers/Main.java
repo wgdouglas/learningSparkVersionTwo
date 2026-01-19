@@ -26,9 +26,13 @@ public class Main {
 
         JavaRDD<Integer>myRdd = spackContext.parallelize(inputData);
 
-        Integer mappingResult = myRdd.reduce((value1, value2) -> value1 + value2);
+        // This is used to reduce two values into one
+        Integer reducingResult = myRdd.reduce((value1, value2) -> value1 + value2);
 
-        System.out.println(mappingResult);
+        // This is used to map values into a functions desired value
+        JavaRDD<Double> squareRootRDD = myRdd.map( value -> Math.sqrt(value ));
+
+        System.out.println(reducingResult);
 
         spackContext.close();
 
