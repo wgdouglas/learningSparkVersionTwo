@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+
     public static void main(String[] args) {
         List<Integer> inputData = new ArrayList<>();
         inputData.add(35);
