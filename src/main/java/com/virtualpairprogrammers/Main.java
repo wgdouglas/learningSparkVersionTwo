@@ -38,6 +38,15 @@ public class Main {
 
         System.out.println( "reducingResult: " + reducingResult);
 
+        // Find how many elements are in squareRootRdd?
+        System.out.println("find number of elements in squareRootRdd: " + squareRootRDD.count());
+
+        // Find an interim count of values & store them into a Rdd to do
+        // transformations to it as an RDD: Use only .map() and .reduce() (imagine .count() cannot be used)
+        JavaRDD<Long> singleIntegerRdd = squareRootRDD.map(value -> 1L);
+        Long interimCountRdd= singleIntegerRdd.reduce((value1, value2) -> value1 + value2);
+        System.out.println("Interim Count RDD: "+ interimCountRdd);
+
         spackContext.close();
 
     }
