@@ -34,7 +34,11 @@ public class Main {
 
         squareRootRDD.foreach(value -> System.out.println(value + "Version 1 values"));//version 1 of using this mapping output function
 
-//        squareRootRDD.foreach(System.out::println); // Version 2 more practical version to use in this practice but not working due to serialization
+        System.out.println("Version 2 mapping values below:");
+        // This is a fix to stop the serialization error due to your local computer's
+        // chip core & uses Java `.forEach()` to iterate over instead of Sparks `.foreach()
+        squareRootRDD.collect().forEach(System.out::println);
+        System.out.println("End of Version 2 mapping values");
 
         System.out.println( "reducingResult: " + reducingResult);
 
