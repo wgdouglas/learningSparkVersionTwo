@@ -32,7 +32,11 @@ public class Main {
         // This is used to map values into a functions desired value
         JavaRDD<Double> squareRootRDD = myRdd.map( value -> Math.sqrt(value ));
 
-        System.out.println(reducingResult);
+        squareRootRDD.foreach(value -> System.out.println(value + "Version 1 values"));//version 1 of using this mapping output function
+
+//        squareRootRDD.foreach(System.out::println); // Version 2 more practical version to use in this practice but not working due to serialization
+
+        System.out.println( "reducingResult: " + reducingResult);
 
         spackContext.close();
 
