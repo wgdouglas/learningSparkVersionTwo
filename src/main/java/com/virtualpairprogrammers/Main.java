@@ -24,11 +24,11 @@ public class Main {
 
         JavaSparkContext spackContext = new JavaSparkContext(sparConfiguration);
 
-        JavaRDD<Integer>myRdd = spackContext.parallelize(inputData);
+        JavaRDD<Integer> originalIntegersRdd = spackContext.parallelize(inputData);
 
-        Integer mappingResult = myRdd.reduce((value1, value2) -> value1 + value2);
-
-        System.out.println(mappingResult);
+        // This is used to map values into a functions desired value
+        //You'll use the java approach which should not be used consistently in Spark Java Development
+        JavaRDD<IntegerWithSquareRoot> squareRootRDD = originalIntegersRdd.map( value -> new IntegerWithSquareRoot(value));
 
         spackContext.close();
 
